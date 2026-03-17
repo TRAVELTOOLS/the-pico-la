@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THEPICO.LA — Premium Live Performance Venue</title>
+  <meta
+    name="description"
+    content="THEPICO.LA is a premium Los Angeles venue for live performances, improv, workshops, and special events, featuring IFTP as a standout resident partner with Eventbrite-powered ticketing."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ['"Cormorant Garamond"', "serif"]
+          },
+          colors: {
+            base: "#060608",
+            panel: "#0f1014",
+            soft: "#151821",
+            line: "rgba(255,255,255,0.08)",
+            gold: "#b89b68",
+            ivory: "#f2ede4",
+            muted: "#bdb6aa",
+            accent: "#d6c29a"
+          },
+          boxShadow: {
+            luxe: "0 25px 80px rgba(0,0,0,0.45)",
+            card: "0 22px 60px rgba(0,0,0,0.28)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root { color-scheme: dark; }
+    html, body { overflow-x: hidden; }
+    body {
+      background:
+        radial-gradient(circle at top, rgba(184,155,104,0.12), transparent 18%),
+        radial-gradient(circle at bottom right, rgba(184,155,104,0.05), transparent 22%),
+        linear-gradient(180deg, #060608 0%, #0a0b10 100%);
+      color: #f2ede4;
+    }
+
+    .grain::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.8) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,.8) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 40% 80%, rgba(255,255,255,.8) 0.5px, transparent 0.5px);
+      background-size: 26px 26px, 30px 30px, 20px 20px;
+    }
+
+    .glass {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .section-reveal { opacity: 1 !important; transform: none !important; } .section-reveal-DISABLED {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .85s ease, transform .85s ease;
+    }
+
+    .section-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-bg {
+      background-image:
+        linear-gradient(180deg, rgba(6,6,8,0.28) 0%, rgba(6,6,8,0.48) 100%),
+        url("https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1800&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .events-bg {
+      background-image:
+        linear-gradient(135deg, rgba(184,155,104,0.16), transparent 42%);
+    }
+
+    .iftp-bg {
+      background:
+        radial-gradient(circle at top left, rgba(184,155,104,0.18), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    }
+
+    .gold-border {
+      box-shadow: inset 0 0 0 1px rgba(184,155,104,0.30);
+    }
+
+    .card-lift {
+      transition: transform .45s ease, border-color .45s ease, box-shadow .45s ease;
+    }
+
+    .card-lift:hover {
+      transform: translateY(-6px);
+      border-color: rgba(184,155,104,0.28);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.35);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-gold/30 selection:text-ivory">
+  <!-- Replace Eventbrite links below with public-facing checkout pages if needed. -->
+  <div class="relative grain min-h-screen">
+    <header class="fixed inset-x-0 top-0 z-50">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
+        <div class="rounded-2xl border border-white/10 bg-black/35 glass shadow-luxe">
+          <div class="flex items-center justify-between px-5 sm:px-6 py-4">
+            <a href="#top" class="flex items-center gap-3 shrink-0">
+              <div class="h-11 w-11 rounded-full border border-gold/40 bg-white/5 flex items-center justify-center text-gold text-xs tracking-[0.28em] font-semibold">
+                TP
+              </div>
+              <div>
+                <div class="font-display text-2xl sm:text-[1.9rem] leading-none text-ivory">THEPICO.LA</div>
+                <div class="text-[10px] uppercase tracking-[0.34em] text-muted">Premium Live Venue</div>
+              </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8 text-sm text-muted">
+              <a href="#events" class="hover:text-ivory transition">Events</a>
+              <a href="#iftp" class="hover:text-ivory transition">IFTP</a>
+              <a href="#why" class="hover:text-ivory transition">Why The Pico</a>
+              <a href="#booking" class="hover:text-ivory transition">Bookings</a>
+              <a href="#footer" class="hover:text-ivory transition">Contact</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-3">
+              <a href="#events" class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-ivory hover:bg-white/10 transition">
+                View Events
+              </a>
+              <a href="#booking" class="inline-flex items-center justify-center rounded-full bg-gold px-4 py-2.5 text-sm font-semibold text-black hover:opacity-90 transition">
+                Book the Venue
+              </a>
+            </div>
+
+            <button id="menuBtn" class="lg:hidden h-11 w-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center" aria-label="Open Menu">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+            </button>
+          </div>
+
+          <div id="mobileMenu" class="lg:hidden hidden border-t border-white/10 px-5 pb-5">
+            <div class="flex flex-col gap-3 pt-4 text-sm text-muted">
+              <a href="#events" class="hover:text-ivory transition">Events</a>
+              <a href="#iftp" class="hover:text-ivory transition">IFTP</a>
+              <a href="#why" class="hover:text-ivory transition">Why The Pico</a>
+              <a href="#booking" class="hover:text-ivory transition">Bookings</a>
+              <a href="#footer" class="hover:text-ivory transition">Contact</a>
+              <a href="#events" class="mt-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-ivory">View Events</a>
+              <a href="#booking" class="rounded-xl bg-gold px-4 py-3 text-center font-semibold text-black">Book the Venue</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="top" class="relative min-h-screen flex items-center hero-bg">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/65 to-[#060608]"></div>
+        <div class="relative z-10 mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 pt-36 pb-20">
+          <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-end">
+            <div class="section-reveal">
+              <div class="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-black/35 px-4 py-2 text-[11px] uppercase tracking-[0.30em] text-gold">
+                Los Angeles • Curated Live Experiences
+              </div>
+
+              <h1 class="mt-8 max-w-5xl font-display text-[3.35rem] sm:text-[5.1rem] lg:text-[6.7rem] leading-[0.88] tracking-[-0.035em]">
+                The Venue for Elevated Performance, Culture, and Presence.
+              </h1>
+
+              <p class="mt-7 max-w-2xl text-base sm:text-lg leading-8 text-ivory/78">
+                THEPICO.LA is a premium destination for live performances, improv, workshops, comedy, and special events—crafted to feel intimate, polished, and unmistakably memorable.
+              </p>
+
+              <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                <a href="#events" class="inline-flex items-center justify-center rounded-full bg-gold px-6 py-4 text-black font-semibold hover:opacity-90 transition shadow-card">
+                  View Events
+                </a>
+                <a href="#booking" class="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/5 px-6 py-4 text-ivory hover:bg-white/10 transition">
+                  Book the Venue
+                </a>
+              </div>
+
+              <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ivory/66">
+                <div class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-gold"></span>Premium live programming</div>
+                <div class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-gold"></span>Resident partner: IFTP</div>
+                <div class="flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-gold"></span>Tickets via Eventbrite</div>
+              </div>
+            </div>
+
+            <div class="section-reveal">
+              <div class="rounded-[30px] border border-white/10 bg-black/35 glass p-6 sm:p-7 shadow-luxe">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <div class="text-xs uppercase tracking-[0.28em] text-gold">Venue Positioning</div>
+                    <div class="mt-2 font-display text-3xl sm:text-4xl leading-none">Designed to Feel Distinct</div>
+                  </div>
+                  <div class="h-12 w-12 rounded-full border border-gold/30 bg-gold/10 flex items-center justify-center text-gold text-lg">✦</div>
+                </div>
+
+                <div class="mt-8 space-y-4">
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div class="text-xs uppercase tracking-[0.26em] text-muted">Programming</div>
+                    <p class="mt-3 text-ivory/80 leading-7">
+                      Live performances, improv shows, workshops, and cultural events curated for audiences who value atmosphere and quality.
+                    </p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div class="text-xs uppercase tracking-[0.26em] text-muted">Experience</div>
+                    <p class="mt-3 text-ivory/80 leading-7">
+                      Intimate enough to feel immersive, polished enough to support premium guest perception and stronger event branding.
+                    </p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div class="text-xs uppercase tracking-[0.26em] text-muted">Ticketing</div>
+                    <p class="mt-3 text-ivory/80 leading-7">
+                      Checkout remains on Eventbrite, keeping the purchase flow familiar while the venue owns a stronger digital presence.
+                    </p>
+                  </div>
+                </div>
+
+                <a href="https://www.eventbrite.com/cc/iftp-festival-2026-shows-workshops-more-4819579" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 text-sm text-gold hover:text-ivory transition">
+                  Eventbrite organizer access ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="relative border-y border-white/8 bg-white/[0.03]">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5">
+          <div class="flex flex-wrap items-center justify-between gap-5 text-xs sm:text-sm uppercase tracking-[0.24em] text-ivory/42">
+            <span>Live Performance</span>
+            <span>Improv</span>
+            <span>Workshops</span>
+            <span>Special Events</span>
+            <span>Private Rentals</span>
+            <span>Los Angeles</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="events" class="relative py-24 sm:py-28 events-bg">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="section-reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <div class="max-w-3xl">
+              <div class="text-xs uppercase tracking-[0.30em] text-gold">Upcoming Events</div>
+              <h2 class="mt-4 font-display text-5xl sm:text-6xl leading-none">A Curated Calendar, Presented with Impact.</h2>
+              <p class="mt-5 text-lg leading-8 text-ivory/72">
+                Explore upcoming shows, workshops, and live experiences hosted at THEPICO.LA. Every event card routes audiences directly to Eventbrite for ticket purchase.
+              </p>
+            </div>
+            <a href="https://www.eventbrite.com/cc/iftp-festival-2026-shows-workshops-more-4819579" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 text-ivory hover:bg-white/10 transition">
+              View More on Eventbrite
+            </a>
+          </div>
+
+          <div class="mt-14 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <article class="section-reveal card-lift overflow-hidden rounded-[28px] border border-white/10 bg-panel shadow-card">
+              <div class="relative h-72 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&w=1200&q=80" alt="Stage lights and audience" class="h-full w-full object-cover transition duration-700 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                <div class="absolute top-5 left-5 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-[11px] uppercase tracking-[0.24em] text-gold">Improv Showcase</div>
+              </div>
+              <div class="p-6">
+                <div class="text-sm text-muted">April 18, 2026</div>
+                <h3 class="mt-3 text-2xl font-semibold">Friday Night Improv House</h3>
+                <p class="mt-4 leading-7 text-ivory/72">
+                  A sharp, high-energy night of live improv inside an intimate room built for timing, chemistry, and audience connection.
+                </p>
+                <div class="mt-6 flex items-center justify-between gap-4">
+                  <span class="text-xs uppercase tracking-[0.24em] text-gold">Live Performance</span>
+                  <a href="https://www.eventbrite.com/cc/iftp-festival-2026-shows-workshops-more-4819579" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-gold px-4 py-2.5 text-sm font-semibold text-black hover:opacity-90 transition">
+                    Get Tickets ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="section-reveal card-lift overflow-hidden rounded-[28px] border border-white/10 bg-panel shadow-card">
+              <div class="relative h-72 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80" alt="Premium venue atmosphere" class="h-full w-full object-cover transition duration-700 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                <div class="absolute top-5 left-5 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-[11px] uppercase tracking-[0.24em] text-gold">Special Event</div>
+              </div>
+              <div class="p-6">
+                <div class="text-sm text-muted">May 02, 2026</div>
+                <h3 class="mt-3 text-2xl font-semibold">The Guest Series: Live at The Pico</h3>
+                <p class="mt-4 leading-7 text-ivory/72">
+                  A premium evening of featured talent and standout programming designed to give the venue and the performers maximum presence.
+                </p>
+                <div class="mt-6 flex items-center justify-between gap-4">
+                  <span class="text-xs uppercase tracking-[0.24em] text-gold">Curated Program</span>
+                  <a href="https://www.eventbrite.com/cc/iftp-festival-2026-shows-workshops-more-4819579" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-gold px-4 py-2.5 text-sm font-semibold text-black hover:opacity-90 transition">
+                    Get Tickets ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="section-reveal card-lift overflow-hidden rounded-[28px] border border-white/10 bg-panel shadow-card">
+              <div class="relative h-72 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80" alt="Workshop audience and creative gathering" class="h-full w-full object-cover transition duration-700 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                <div class="absolute top-5 left-5 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-[11px] uppercase tracking-[0.24em] text-gold">Workshop</div>
+              </div>
+              <div class="p-6">
+                <div class="text-sm text-muted">May 16, 2026</div>
+                <h3 class="mt-3 text-2xl font-semibold">Performance Intensive Weekend</h3>
+                <p class="mt-4 leading-7 text-ivory/72">
+                  A high-value workshop format for performers and creators looking to develop stage presence, responsiveness, and live instincts.
+                </p>
+                <div class="mt-6 flex items-center justify-between gap-4">
+                  <span class="text-xs uppercase tracking-[0.24em] text-gold">Creative Development</span>
+                  <a href="https://www.eventbrite.com/cc/iftp-festival-2026-shows-workshops-more-4819579" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-gold px-4 py-2.5 text-sm font-semibold text-black hover:opacity-90 transition">
+                    Get Tickets ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="iftp" class="relative py-24 sm:py-28">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="section-reveal overflow-hidden rounded-[34px] border border-gold/20 bg-panel shadow-luxe iftp-bg">
+            <div class="grid lg:grid-cols-[0.95fr_1.05fr]">
+              <div class="relative min-h-[380px] lg:min-h-full">
+                <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1400&q=80" alt="Creative performance atmosphere" class="absolute inset-0 h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-r from-black/15 via-black/45 to-black/82"></div>
+                <div class="absolute top-6 left-6 rounded-full border border-gold/30 bg-black/35 px-4 py-2 text-[11px] uppercase tracking-[0.28em] text-gold">
+                  Resident Partner
+                </div>
+              </div>
+
+              <div class="p-8 sm:p-10 lg:p-14">
+                <div class="text-xs uppercase tracking-[0.30em] text-gold">IFTP • Improv for the People</div>
+                <h2 class="mt-4 font-display text-5xl sm:text-6xl leading-none">
+                  A Featured Creative Residency Within THEPICO.LA
+                </h2>
+                <p class="mt-6 max-w-2xl text-lg leading-8 text-ivory/76">
+                  Improv for the People presents shows, workshops, and recurring live experiences at THEPICO.LA, contributing an energetic and respected creative presence within the venue’s broader program.
+                </p>
+                <p class="mt-5 max-w-2xl leading-8 text-ivory/68">
+                  This section is positioned as a major partnership—not a side note—so the venue remains the flagship brand while IFTP is clearly showcased as a distinguished resident partner.
+                </p>
+
+                <div class="mt-8 grid sm:grid-cols-3 gap-4">
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-5 gold-border">
+                    <div class="font-display text-3xl">Shows</div>
+                    <div class="mt-2 text-sm text-muted">Recurring live improv programming</div>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-5 gold-border">
+                    <div class="font-display text-3xl">Workshops</div>
+                    <div class="mt-2 text-sm text-muted">Training and stage development</div>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-5 gold-border">
+                    <div class="font-display text-3xl">Experiences</div>
+                    <div class="mt-2 text-sm text-muted">Creative community engagement</div>
+                  </div>
+                </div>
+
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                  <a href="https://www.eventbrite.com/cc/iftp-festival-2026-shows-workshops-more-4819579" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-gold px-6 py-4 font-semibold text-black hover:opacity-90 transition">
+                    Explore IFTP Events
+                  </a>
+                  <a href="https://www.eventbrite.com/cc/iftp-festival-2026-shows-workshops-more-4819579" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-4 text-ivory hover:bg-white/10 transition">
+                    View Workshops on Eventbrite
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" class="relative py-24 sm:py-28">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="section-reveal max-w-3xl">
+            <div class="text-xs uppercase tracking-[0.30em] text-gold">Why The Pico</div>
+            <h2 class="mt-4 font-display text-5xl sm:text-6xl leading-none">Intimate Scale. Premium Perception. Flexible Use.</h2>
+            <p class="mt-5 text-lg leading-8 text-ivory/72">
+              THEPICO.LA is ideal for performances, comedy, improv, workshops, and private events because it balances warmth, cultural credibility, and professional presentation in one cohesive environment.
+            </p>
+          </div>
+
+          <div class="mt-14 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div class="section-reveal rounded-[26px] border border-white/10 bg-soft p-7 gold-border">
+              <div class="h-12 w-12 rounded-2xl border border-gold/20 bg-gold/12 flex items-center justify-center text-gold text-lg">01</div>
+              <h3 class="mt-6 text-2xl font-semibold">Immersive Atmosphere</h3>
+              <p class="mt-4 leading-7 text-ivory/70">
+                The venue feels immediate and intentional, creating a stronger emotional experience for live audiences and performers.
+              </p>
+            </div>
+
+            <div class="section-reveal rounded-[26px] border border-white/10 bg-soft p-7 gold-border">
+              <div class="h-12 w-12 rounded-2xl border border-gold/20 bg-gold/12 flex items-center justify-center text-gold text-lg">02</div>
+              <h3 class="mt-6 text-2xl font-semibold">Versatile Programming</h3>
+              <p class="mt-4 leading-7 text-ivory/70">
+                Suitable for improv, workshops, comedy, showcases, private gatherings, and cultural events without losing brand coherence.
+              </p>
+            </div>
+
+            <div class="section-reveal rounded-[26px] border border-white/10 bg-soft p-7 gold-border">
+              <div class="h-12 w-12 rounded-2xl border border-gold/20 bg-gold/12 flex items-center justify-center text-gold text-lg">03</div>
+              <h3 class="mt-6 text-2xl font-semibold">Premium Brand Signal</h3>
+              <p class="mt-4 leading-7 text-ivory/70">
+                The environment communicates quality, curation, and trust—important for guests, collaborators, and private clients alike.
+              </p>
+            </div>
+
+            <div class="section-reveal rounded-[26px] border border-white/10 bg-soft p-7 gold-border">
+              <div class="h-12 w-12 rounded-2xl border border-gold/20 bg-gold/12 flex items-center justify-center text-gold text-lg">04</div>
+              <h3 class="mt-6 text-2xl font-semibold">Trusted Ticket Flow</h3>
+              <p class="mt-4 leading-7 text-ivory/70">
+                Audiences discover the brand through the venue website and complete checkout through Eventbrite with minimal friction.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="booking" class="relative py-24 sm:py-28">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-[1fr_0.92fr] gap-8 items-start">
+            <div class="section-reveal">
+              <div class="text-xs uppercase tracking-[0.30em] text-gold">Venue Rental & Bookings</div>
+              <h2 class="mt-4 font-display text-5xl sm:text-6xl leading-none">Available for Producers, Organizers, and Private Events.</h2>
+              <p class="mt-6 max-w-3xl text-lg leading-8 text-ivory/74">
+                THEPICO.LA is available for select rentals, branded activations, workshops, private events, and performance-led productions seeking a venue with identity, visual appeal, and flexibility.
+              </p>
+
+              <div class="mt-10 grid sm:grid-cols-2 gap-5">
+                <div class="rounded-[24px] border border-white/10 bg-soft p-6">
+                  <div class="text-xs uppercase tracking-[0.24em] text-gold">Best Fit</div>
+                  <ul class="mt-4 space-y-3 leading-7 text-ivory/72">
+                    <li>• Live shows and performance nights</li>
+                    <li>• Improv and acting workshops</li>
+                    <li>• Private events and invited gatherings</li>
+                    <li>• Creative or cultural productions</li>
+                  </ul>
+                </div>
+
+                <div class="rounded-[24px] border border-white/10 bg-soft p-6">
+                  <div class="text-xs uppercase tracking-[0.24em] text-gold">Value Offered</div>
+                  <ul class="mt-4 space-y-3 leading-7 text-ivory/72">
+                    <li>• A room that already feels established</li>
+                    <li>• Strong premium guest perception</li>
+                    <li>• Flexible live-event compatibility</li>
+                    <li>• A clean, trusted ticketing path</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-reveal">
+              <div class="rounded-[30px] border border-white/10 bg-panel p-7 sm:p-8 shadow-luxe">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <div class="text-xs uppercase tracking-[0.28em] text-gold">Request Booking</div>
+                    <h3 class="mt-3 text-3xl font-semibold">Start the Inquiry</h3>
+                  </div>
+                  <div class="h-12 w-12 rounded-full bg-gold text-black flex items-center justify-center text-lg font-bold">↗</div>
+                </div>
+
+                <p class="mt-5 leading-8 text-ivory/72">
+                  For venue rentals, partnerships, workshops, or special event inquiries, use the contact points below and replace with your final business details if needed.
+                </p>
+
+                <div class="mt-8 space-y-4">
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div class="text-xs uppercase tracking-[0.24em] text-muted">Booking Email</div>
+                    <a href="mailto:booking@thepico.la" class="mt-2 inline-block text-lg hover:text-gold transition">booking@thepico.la</a>
+                  </div>
+
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div class="text-xs uppercase tracking-[0.24em] text-muted">Business Phone</div>
+                    <a href="tel:+12130000000" class="mt-2 inline-block text-lg hover:text-gold transition">+1 (213) 000-0000</a>
+                  </div>
+
+                  <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div class="text-xs uppercase tracking-[0.24em] text-muted">Location</div>
+                    <div class="mt-2 text-lg">Los Angeles, California</div>
+                  </div>
+                </div>
+
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                  <a href="mailto:booking@thepico.la" class="inline-flex items-center justify-center rounded-full bg-gold px-6 py-4 font-semibold text-black hover:opacity-90 transition">
+                    Request Booking
+                  </a>
+                  <a href="#events" class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-4 text-ivory hover:bg-white/10 transition">
+                    See Venue Programming
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="relative pb-24 sm:pb-28">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="section-reveal relative overflow-hidden rounded-[34px] border border-gold/20 bg-gradient-to-r from-[#121218] via-[#171417] to-[#0f1014] p-8 sm:p-12 shadow-luxe">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(184,155,104,0.18),transparent_32%)]"></div>
+            <div class="relative z-10 flex flex-col xl:flex-row xl:items-end xl:justify-between gap-8">
+              <div class="max-w-3xl">
+                <div class="text-xs uppercase tracking-[0.30em] text-gold">Eventbrite Powered</div>
+                <h2 class="mt-4 font-display text-5xl sm:text-6xl leading-none">A Stronger Venue Brand with a Familiar Buying Path.</h2>
+                <p class="mt-5 text-lg leading-8 text-ivory/76">
+                  The website positions THEPICO.LA like a premium cultural venue while preserving Eventbrite as the checkout destination audiences already trust.
+                </p>
+              </div>
+
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a href="https://www.eventbrite.com/cc/iftp-festival-2026-shows-workshops-more-4819579" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-gold px-6 py-4 font-semibold text-black hover:opacity-90 transition">
+                  Browse Eventbrite
+                </a>
+                <a href="https://www.eventbrite.com/cc/iftp-festival-2026-shows-workshops-more-4819579" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-4 text-ivory hover:bg-white/10 transition">
+                  Explore IFTP
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="border-t border-white/8 bg-black/25">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid lg:grid-cols-[1.1fr_0.9fr_0.7fr] gap-10">
+          <div>
+            <div class="font-display text-4xl sm:text-5xl leading-none">THEPICO.LA</div>
+            <p class="mt-5 max-w-xl leading-8 text-ivory/68">
+              A premium Los Angeles venue for live performance, improv, workshops, and curated experiences—positioned to feel elegant, cultural, and commercially credible.
+            </p>
+            <div class="mt-6 text-sm uppercase tracking-[0.28em] text-gold">
+              Featured Resident Partner: IFTP / Improv for the People
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-8">
+            <div>
+              <div class="text-sm uppercase tracking-[0.24em] text-muted">Navigation</div>
+              <div class="mt-5 flex flex-col gap-3 text-ivory/78">
+                <a href="#events" class="hover:text-gold transition">Upcoming Events</a>
+                <a href="#iftp" class="hover:text-gold transition">IFTP</a>
+                <a href="#why" class="hover:text-gold transition">Why The Pico</a>
+                <a href="#booking" class="hover:text-gold transition">Venue Booking</a>
+              </div>
+            </div>
+            <div>
+              <div class="text-sm uppercase tracking-[0.24em] text-muted">Contact</div>
+              <div class="mt-5 flex flex-col gap-3 text-ivory/78">
+                <span>Pico Boulevard, Los Angeles, California</span>
+                <a href="mailto:booking@thepico.la" class="hover:text-gold transition">booking@thepico.la</a>
+                <a href="tel:+12130000000" class="hover:text-gold transition">+1 (213) 000-0000</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="text-sm uppercase tracking-[0.24em] text-muted">Social</div>
+            <div class="mt-5 flex flex-col gap-3 text-ivory/78">
+              <a href="https://www.instagram.com/thepico.la/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">THEPICO.LA Instagram</a>
+              <a href="https://www.instagram.com/improvforthepeople/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">IFTP Instagram</a>
+              <a href="https://www.latimes.com/projects/covid-effects-transform-pico-boulevard-la-businesses/" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">Press / Los Angeles Times</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 pt-6 border-t border-white/8 flex flex-col md:flex-row gap-4 md:items-center md:justify-between text-sm text-ivory/45">
+          <p>© 2026 THEPICO.LA. All rights reserved.</p>
+          <p>Ticket purchases are handled through Eventbrite.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      mobileMenu.que
